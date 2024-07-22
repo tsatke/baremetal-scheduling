@@ -11,9 +11,13 @@ Everything mentioned here only within reason obviously.
 
 * abstract over scheduling algorithms
   * provide some implementations (round-robin, something with priority, maybe something more complex)
+  * Would something abstract work for advanced algorithms such as CFS, EEVDF or scx_rustland? These might need more metadata:
+    * https://github.com/sched-ext/scx/blob/v1.0.1/scheds/rust/scx_rusty/src/load_balance.rs#L318-L325
+    * https://github.com/sched-ext/scx/blob/v1.0.1/scheds/rust/scx_rustland/src/main.rs#L168-L176
 * simple api
 * stability
 * x86_64 and aarch64 support (maybe more in the future?)
+  * Could we make it abstract over an arch-dependent stack switching mechanism?
 * make use of Rust's mechanisms where possible (that means no `Rc<RefCell>` for tasks for example)
 
 ## Non-Goals
