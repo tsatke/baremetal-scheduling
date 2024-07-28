@@ -14,8 +14,8 @@ Everything mentioned here only within reason obviously.
   * Would something abstract work for advanced algorithms such as CFS, EEVDF or scx_rustland? These might need more metadata:
     * https://github.com/sched-ext/scx/blob/v1.0.1/scheds/rust/scx_rusty/src/load_balance.rs#L318-L325
     * https://github.com/sched-ext/scx/blob/v1.0.1/scheds/rust/scx_rustland/src/main.rs#L168-L176
-      * Maybe we could restrict features to trait impls on the TCB, for example a `struct LoadBalancingScheduler<T: Tcb + Load>`, that way the more complex of a scheduler you want to use, the more your TCB has to impl
-      * Maybe we can also provide structs such as `struct LoadInfo`, which a `Tcb` used by a certain scheduler has to expose for such information, thus keeping traits small and TCBs clean
+      * Maybe we could restrict features to trait impls on the TCB, for example a `struct LoadBalancingScheduler<T: Tcb + AsRef<Load>>`, that way the more complex of a scheduler you want to use, the more your TCB has to impl (through `AsRef`)
+      * `AsRef` would be perfect if we were to provide separate structs for embedding
 * simple api
 * stability
 * x86_64 and aarch64 support (maybe more in the future?)
